@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import Navbar from './Navbar';
 import Home from './Home';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Create from './Create';
+import BlogDetails from './blogDetails';
 
 
 function App() {
@@ -10,12 +11,24 @@ function App() {
   
   return (
     <>
+    <Router>
     <div className="App">
       <Navbar />
         <div className="content">
-          <Home /> 
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/create">
+              <Create />
+            </Route>
+            <Route path="/blogs/:id">
+              <BlogDetails />
+            </Route>
+          </Switch>
         </div>
       </div>
+    </Router>
     </>
   )
 }
